@@ -1,29 +1,31 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 int main() {
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode(300, 450), "Calculator");
+    int x = 300;
+    int y = 600;
+    //crea la finestra
+    sf::RenderWindow window(sf::VideoMode(x, y), "Finestra SFML");
 
-    // Set the frame rate limit
-    window.setFramerateLimit(60);
+    //dichiarazione rettangolo
+    sf::RectangleShape rectangle(sf::Vector2f(x, y));
+    rectangle.setFillColor(sf::Color::Green);
 
-    // Main loop
-    while (window.isOpen()) {
-        // Process events
+    while(true){
+        //gestione eventi
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                return 0; //esci dal programma se la finestra viene chiusa
         }
 
-        // Clear the window with a black color
-        window.clear(sf::Color::Black);
+        //pulisci la finestra con un colore bianco
+        window.clear(sf::Color::White);
 
-        // Draw things here
-        
-        // Display the contents of the window
+        //disegna qui gli oggetti grafici
+        window.draw(rectangle);
+
+        //mostra il contenuto disegnato
         window.display();
-    }
 
-    return 0;
+    }
 }
